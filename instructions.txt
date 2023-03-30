@@ -1,0 +1,24 @@
+Install:
+    Fist, install chocolate software:
+        Run the followind command in your powershall:
+            $ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+        After this, run this command:
+            $ choco install rabbitmq
+
+        Install this lab to use in python:
+            $ pip install pika
+
+Ilustration of eda (event-driven-archtecture) is in:
+    ./classIlustrations/edaIlustration.jpg
+
+
+Run rabbitMQ:
+    access:
+        http://localhost:15672/
+
+    default user: guest
+    default password: guest
+
+    Run script: 
+        $ python [filePath]
