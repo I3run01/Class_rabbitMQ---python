@@ -1,4 +1,6 @@
 import pika
+import time
+import random
 
 connection_parameters = pika.ConnectionParameters('localhost')
 
@@ -8,10 +10,15 @@ channel = connection.channel()
 
 channel.queue_declare(queue='letterbox')
 
-message = "Hello this is my first message"
+messageID = 1
 
-channel.basic_publish(exchange='', routing_key='letterbox', body=message)
+while (True):
+    message = f"Sending message: {messageID}"
 
-print(f"sent message: {message}")
+    channel.basic_publish(exchange='', routing_key='letterbox', body=message)
 
-connection.close()
+    print(f"sent message: {message}")
+
+    time.sleep(random.randint(1, 4))
+
+    messageID += 1
