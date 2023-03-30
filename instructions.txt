@@ -12,6 +12,9 @@ Install:
 Ilustration of eda (event-driven-archtecture) is in:
     ./classIlustrations/edaIlustration.jpg
 
+    A new ilustration of multiple consumer is in:
+        ./classIlustrations/multipleConsumers.jpg
+
 
 Run rabbitMQ:
     access:
