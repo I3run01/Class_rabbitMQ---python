@@ -7,9 +7,10 @@ connection_parameters = pika.ConnectionParameters('localhost')
 connection = pika.BlockingConnection(connection_parameters)
 
 channel = connection.channel()
-
-channel.exchange_declare(exchange='pubsub', exchange_type=ExchangeType.fanout) #type of your exchange
 #Finish the open conection step
+
+#declare your exchange
+channel.exchange_declare(exchange='pubsub', exchange_type=ExchangeType.fanout) 
 
 message = f"Hello I want to broadcast this message" #message itself
 
