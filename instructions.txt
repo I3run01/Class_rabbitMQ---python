@@ -15,6 +15,11 @@ Ilustration of eda (event-driven-archtecture) is in:
     A new ilustration of multiple consumer is in:
         ./classIlustrations/multipleConsumers.jpg
 
+Ilustration of Direct and Topic Exchange
+	./classIlustrations/Topic Exchnge.jpg
+	./classIlustrations/Direct Exchange.jpg
+	
+
 
 Run rabbitMQ:
     access:
