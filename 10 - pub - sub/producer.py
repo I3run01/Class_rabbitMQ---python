@@ -1,6 +1,5 @@
 import pika
-import time
-import random
+from pika.exchange_type import ExchangeType
 
 #Start -> Open conection
 connection_parameters = pika.ConnectionParameters('localhost')
@@ -9,19 +8,13 @@ connection = pika.BlockingConnection(connection_parameters)
 
 channel = connection.channel()
 
-channel.queue_declare(queue='letterbox')
+channel.exchange_declare(exchange='pubsub', exchange_type=ExchangeType.fanout) #type of your exchange
 #Finish the open conection step
 
+message = f"Hello I want to broadcast this message" #message itself
 
-messageID = 1 #message id
+channel.basic_publish(exchange='pubsub', routing_key='', body=message) #message publishing
 
-while (True): #looping
-    message = f"Sending message: {messageID}" #message itself
+print(f"sent message: {message}") #the message in console
 
-    channel.basic_publish(exchange='', routing_key='letterbox', body=message) #message publishing
-
-    print(f"sent message: {message}") #the message in console
-
-    time.sleep(random.randint(1, 4)) #sleep time
-
-    messageID += 1 #sum 1 in he messaege id
+connection.close()
