@@ -16,7 +16,8 @@ channel.exchange_declare(exchange='myTopicExchange', exchange_type=ExchangeType.
 
 queue = channel.queue_declare(queue='', exclusive=True)
 
-channel.queue_bind(exchange='myTopicExchange', queue=queue.method.queue, routing_key='analyticsonly')
+channel.queue_bind(exchange='myTopicExchange', queue=queue.method.queue,
+                   routing_key='user.#')
 
 channel.basic_consume(queue=queue.method.queue, auto_ack=True, on_message_callback=on_message_received) #which function goes for each queue
 
