@@ -4,11 +4,13 @@ import uuid
 def on_reply_message_received(ch, method, properties, body):
     print(f"reply recieved: {body}")
 
+#connection
 connection_parameters = pika.ConnectionParameters('localhost')
 
 connection = pika.BlockingConnection(connection_parameters)
 
 channel = connection.channel()
+#connection
 
 reply_queue = channel.queue_declare(queue='', exclusive=True)
 
