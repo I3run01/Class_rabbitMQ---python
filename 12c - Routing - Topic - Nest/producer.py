@@ -1,16 +1,17 @@
 import pika
-from pika.exchange_type import ExchangeType
 
-exchangeName = 'helloWorldExchange'
-
-connection_parameters = pika.ConnectionParameters('localhost')
-connection = pika.BlockingConnection(connection_parameters)
+connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
 
-channel.exchange_declare(exchange=exchangeName, exchange_type=ExchangeType.topic)
+exchange_name = 'helloWorldExchange'
+routing_key = 'hello.world'
+queue_name = 'myQueue'
 
-message = 'hello world'
-channel.basic_publish(exchange=exchangeName,routing_key='hello.world', body=message)
-print(message)
+channel.exchange_declare(exchange=exchange_name, exchange_type='direct', durable=False)
+
+message = 'Hello, world!'
+channel.basic_publish(exchange=exchange_name, routing_key=routing_key, body=message)
+
+print(f'Sent message: {message}')
 
 connection.close()
