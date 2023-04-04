@@ -1,7 +1,7 @@
 import pika
 from pika.exchange_type import ExchangeType
 
-exchangeName = 'MATH_SERVICE'
+exchangeName = 'helloWorldExchange'
 
 connection_parameters = pika.ConnectionParameters('localhost')
 connection = pika.BlockingConnection(connection_parameters)
